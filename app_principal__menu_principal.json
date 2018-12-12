@@ -1,0 +1,33 @@
+{
+    "modifications": [
+        {
+            "type": "insertAfterItem",
+            "path": "/items[root]",
+            "value": {
+                "NAME": "clientes",
+                "TEXT": "Clientes",
+                "URL": "principal/clientes/master",
+                "ICON": "dashboard",
+                "VISIBLE": true,
+                "COLOR": "rgb(30, 170, 30)"
+            }
+        },
+        {
+            "type": "insertAfterItem",
+            "path": "/items[clientes]",
+            "value": {
+                "NAME": "inactivos",
+                "TEXT": "Clientes inactivos",
+                "URL": "principal/clientes/custom/masterclientesinactivos",
+                "ICON": "dashboard",
+                "VISIBLE": true,
+                "COLOR": "rgb(30, 170, 30)"
+            }
+        },
+        {
+            "type": "updateNode",
+            "path": "/items[empresa]/VISIBLE",
+            "value": false
+        }
+    ]
+}

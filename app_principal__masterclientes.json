@@ -1,0 +1,30 @@
+{
+    "querystring": {
+        "p_l": 50,
+        "p_c": true,
+        "o_1": "nombre",
+        "o_2": "codcliente"
+    },
+    "schema": {},
+    "layout": {
+        "masterClientes": {
+            "componente": "YBGrid",
+            "label": "Clientes",
+            "prefix": "clientes",
+            "filter": "buscador",
+            "columns": [
+                {"tipo": "field", "listpos": "title", "key": "nombre", "width": 150, "flex": 2},
+                {"tipo": "field", "listpos": "subtitle", "key": "cifnif"},
+                {"tipo": "field", "listpos": "body", "key": "nombrecomercial"},
+                {"tipo": "field", "listpos": "body", "key": "telefono1", "label": "Teléfono"}
+            ],            
+            "rowclick": "link"
+        },
+        "newRecordTelest": {
+            "componente": "YBNewRecord",
+            "class": "info",
+            "icon": "add"
+        }
+    },
+    "acciones": {}
+}

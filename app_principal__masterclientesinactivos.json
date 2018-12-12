@@ -1,0 +1,54 @@
+{
+    "querystring": {
+        "p_l": 50,
+        "p_c": true
+    },
+    "schema": {
+        "clientesInactivos": {
+            "query": {
+                "p_l": 50
+            }
+        }
+    },
+    "layout": {
+        "queryGrid_clientesInactivos": {
+            "componente": "YBTable",
+            "label": "Clientes Inactivos",
+            "prefix": "clientesInactivos",
+            "multiselectable": true,
+            "filter": "",
+            "type": "query",
+            "columns": [
+                {"tipo": "field", "key": "c.codcliente", "label": "Código", "width": 150},
+                {"tipo": "field", "key": "c.nombre", "label": "Nombre", "width": 250},
+                {"tipo": "field", "key": "d.direccion", "label": "Direccion", "width": 250},
+                {"tipo": "field", "key": "c.telefono1", "label": "Teléfono", "width": 100},
+                {"tipo": "field", "key": "c.email", "label": "Email", "width": 150},
+                {"tipo": "field", "key": "fecha", "label": "Fecha", "width": 100}
+            ],
+            "rowclick": "dameDetalleVentas",
+            "accionesGrid": [
+                {
+                    "key": "emails",
+                    "label": "Obtener emails",
+                    "success": [
+                        {"slot": "refrescar"}
+                    ]
+                }
+            ]
+        }
+    },
+    "acciones": {
+        "dameDetalleVentas": {
+            "action": "goto",
+            "prefix": "clientes",
+            "serverAction": "dameDetalleVentasPorCliente"
+        },
+        "emails": {
+            "action": "gridAction",
+            "icon": "email",
+            "prefix": "clientes",
+            "serverAction": "dameEmails"
+        }
+    }
+}

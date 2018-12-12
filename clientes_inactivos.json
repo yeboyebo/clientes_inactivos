@@ -1,7 +1,88 @@
 {
     "name": "clientes_inactivos",
     "modifications": {
-        "addFile": [],
+        "addFile": [
+            {
+                "path": "apps/principal/templates/principal/plantillas/",
+                "name": "app_principal__masterclientesinactivos.json"
+            },
+            {
+                "path": "models/flfactppal/",
+                "name": "model_flfactppal__clientesinactivos.py"
+            },
+            {
+                "path": "models/flfactppal/",
+                "name": "model_flfactppal__clientesinactivos_def.py"
+            },
+            {
+                "path": "models/flfactppal/",
+                "name": "model_flfactppal__clientes.py"
+            },
+            {
+                "path": "models/flfactppal/",
+                "name": "model_flfactppal__clientes_def.py"
+            },
+            {
+                "path": "models/flfactppal/",
+                "name": "model_flfactppal__dirclientes.py"
+            },
+            {
+                "path": "models/flfactppal/",
+                "name": "model_flfactppal__dirclientes_def.py"
+            },
+            {
+                "path": "models/flfactppal/",
+                "name": "model_flfactppal__usuarios.py"
+            },
+            {
+                "path": "models/flfactppal/",
+                "name": "model_flfactppal__usuarios_def.py"
+            },
+            {
+                "path": "models/flfactppal/",
+                "name": "model_flfactppal__agentes.py"
+            },
+            {
+                "path": "models/flfactppal/",
+                "name": "model_flfactppal__agentes_def.py"
+            },
+            {
+                "path": "models/flfactppal/",
+                "name": "model_flfactppal__gruposclientes.py"
+            },
+            {
+                "path": "models/flfactppal/",
+                "name": "model_flfactppal__gruposclientes_def.py"
+            },
+            {
+                "path": "models/flcontppal/",
+                "name": "model_flcontppal__co_cuentas.py"
+            },
+            {
+                "path": "models/flcontppal/",
+                "name": "model_flcontppal__co_cuentas_def.py"
+            },
+            {
+                "path": "models/flcontppal/",
+                "name": "model_flcontppal__co_subcuentas.py"
+            },
+            {
+                "path": "models/flcontppal/",
+                "name": "model_flcontppal__co_subcuentas_def.py"
+            },
+            {
+                "name": "app_principal__inactivos.json",
+                "path": "apps/principal/templates/principal/plantillas/"
+            },
+            {
+                "name": "app_principal__masterclientes.json",
+                "path": "apps/principal/templates/principal/plantillas/"
+            },
+            {
+                "path": "apps/principal/templates/principal/plantillas/",
+                "name": "app_principal__ventasclientes.json"
+            }
+        ],
         "replaceFile": [
             {
                 "name": "dependencias.json",
@@ -17,6 +98,10 @@
             {
                 "name": "registros.json",
                 "path": "config/"
+            },
+            {
+                "path": "apps/principal/templates/principal/",
+                "name": "app_principal__menu_principal.json"
             }
         ],
         "deleteFile": []

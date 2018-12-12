@@ -1,0 +1,33 @@
+{
+    "querystring": {
+        "p_l": 50,
+        "p_c": true
+    },
+    "schema": {
+        "ventasClientes": {
+            "query": {
+                "p_l": 50
+            }
+        }
+    },
+    "layout": {
+    	"queryGrid_ventasClientes": {
+            "componente": "YBTable",
+            "label": "Lineas de pedidos de cliente",
+            "prefix": "ventasClientes",
+            "filter": "",
+            "type": "query",
+            "columns": [
+                {"tipo": "field", "key": "pedidoscli.fecha", "label": "Fecha", "width": 150},
+                {"tipo": "field", "key": "pedidoscli.codigo", "label": "Código", "width": 250},
+                {"tipo": "field", "key": "lineaspedidoscli.referencia", "label": "Referencia", "width": 250},
+                {"tipo": "field", "key": "lineaspedidoscli.cantidad", "label": "Cantidad", "width": 100},
+                {"tipo": "field", "key": "lineaspedidoscli.pvpunitario", "label": "P. Unitario", "width": 150},
+                {"tipo": "field", "key": "lineaspedidoscli.dtopor", "label": "% Dto.", "width": 100},
+                {"tipo": "field", "key": "lineaspedidoscli.pvptotal", "label": "P. Total.", "width": 150}
+            ]
+        }
+    },
+    "acciones": {
+    }
+}

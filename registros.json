@@ -1,3 +1,25 @@
 {
-    "modifications": []
+    "modifications": [
+        {
+            "type": "insertAfterNode",
+            "path": "/flfactppal/root",
+            "value": {
+                "clientes": null
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/flfactppal/clientes",
+            "value": {
+                "dirclientes": null
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/flfactppal/dirclientes",
+            "value": {
+                "gruposclientes": null
+            }
+        }
+    ]
 }
