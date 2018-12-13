@@ -16,7 +16,10 @@
             "label": "Clientes Inactivos",
             "prefix": "clientesInactivos",
             "multiselectable": true,
-            "filter": "",
+            "autofilter": false,
+            "filter": {
+                "fecha": {"filterType": "desde"}
+            },
             "type": "query",
             "columns": [
                 {"tipo": "field", "key": "c.codcliente", "label": "Código", "width": 150},

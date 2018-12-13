@@ -39,7 +39,8 @@ class clientes_inactivos_clientes(interna_clientes, helpers.MixinConAcciones):
         return form.iface.getDesc()
 
     @helpers.decoradores.accion(aqparam=["oParam"])
-    def queryGrid_clientesInactivos(model):
+    def queryGrid_clientesInactivos(model, filters):
+        print("_________", filters)
         return form.iface.queryGrid_clientesInactivos(model)
 
     @helpers.decoradores.accion(aqparam=["oParam"])

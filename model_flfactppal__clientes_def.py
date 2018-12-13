@@ -80,8 +80,10 @@ class clientes_inactivos(interna):
             print(email)
             if email and email != '':
                 emails = emails + email + ';'
-        print('emails: ' + emails)
-        return True
+        response["status"] = 2
+        response["confirm"] = emails
+        response["close"] = True
+        return response
 
     def __init__(self, context=None):
         super(clientes_inactivos, self).__init__(context)
