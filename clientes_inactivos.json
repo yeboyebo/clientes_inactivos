@@ -51,6 +51,10 @@
             {
                 "path": "apps/principal/templates/principal/",
                 "name": "app_principal__menu_principal.json"
+            },
+            {
+                "name": "app_portal__menu_portal.json",
+                "path": "apps/portal/templates/portal/"
             }
         ],
         "deleteFile": []
