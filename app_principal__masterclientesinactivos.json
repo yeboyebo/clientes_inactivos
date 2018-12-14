@@ -16,6 +16,7 @@
             "label": "Clientes Inactivos",
             "prefix": "clientesInactivos",
             "multiselectable": true,
+            "cansavefilter": false,
             "autofilter": false,
             "filter": {
                 "fecha": {"filterType": "desde"}
@@ -24,7 +25,7 @@
             "columns": [
                 {"tipo": "field", "key": "c.codcliente", "label": "Código", "width": 150},
                 {"tipo": "field", "key": "c.nombre", "label": "Nombre", "width": 250},
-                {"tipo": "field", "key": "d.direccion", "label": "Direccion", "width": 250},
+                {"tipo": "field", "key": "d.direccion", "label": "Dirección", "width": 250},
                 {"tipo": "field", "key": "c.telefono1", "label": "Teléfono", "width": 100},
                 {"tipo": "field", "key": "c.email", "label": "Email", "width": 150},
                 {"tipo": "field", "key": "fecha", "label": "Fecha", "width": 100}
@@ -33,10 +34,7 @@
             "accionesGrid": [
                 {
                     "key": "emails",
-                    "label": "Obtener emails",
-                    "success": [
-                        {"slot": "refrescar"}
-                    ]
+                    "label": "Obtener emails"
                 }
             ]
         }

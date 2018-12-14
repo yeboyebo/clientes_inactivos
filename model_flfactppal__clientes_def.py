@@ -1,50 +1,21 @@
-# @class_declaration interna #
-from YBLEGACY import qsatype
-
-
-class interna(qsatype.objetoBase):
-
-    ctx = qsatype.Object()
-
-    def __init__(self, context=None):
-        self.ctx = context
-
 
 # @class_declaration clientes_inactivos #
 from YBLEGACY.constantes import *
 
 
-class clientes_inactivos(interna):
+class clientes_inactivos(flfactppal):
 
-    def clientes_inactivos_initValidation(self, name, data=None):
-        response = True
-        return response
-
-    def clientes_inactivos_iniciaValoresLabel(self, model=None, template=None, cursor=None):
-        labels = {}
-        return labels
-
-    def clientes_inactivos_bChLabel(self, fN=None, cursor=None):
-        labels = {}
-        return labels
-
-    def clientes_inactivos_getFilters(self, model, name, template=None):
-        filters = []
-        return filters
-
-    def clientes_inactivos_getForeignFields(self, model, template=None):
-        fields = []
-        return fields
-
-    def clientes_inactivos_getDesc(self):
-        desc = None
-        return desc
-
-    def clientes_inactivos_queryGrid_clientesInactivos(self, model):
+    def clientes_inactivos_queryGrid_clientesInactivos(self, model, filters):
+        fecha = ''
+        if(filters):
+            print(filters['[d_fecha]'])
+            fecha = "'" + filters['[d_fecha]'] + "'"
+        if not fecha or fecha == "''":
+            fecha = 'CURRENT_DATE'
         query = {}
         query["tablesList"] = ("clientes,pedidoscli")
         query["select"] = ("c.codcliente, c.nombre, c.email, c.telefono1, MAX(antes.fecha) as fecha, d.direccion")
-        query["from"] = ("clientes AS c INNER JOIN pedidoscli AS antes ON c.codcliente = antes.codcliente AND antes.fecha < CURRENT_DATE LEFT OUTER JOIN pedidoscli AS despues ON c.codcliente = despues.codcliente AND despues.fecha >= CURRENT_DATE INNER JOIN dirclientes d ON c.codcliente = d.codcliente and d.domfacturacion is true")
+        query["from"] = ("clientes AS c INNER JOIN pedidoscli AS antes ON c.codcliente = antes.codcliente AND antes.fecha < " + fecha + " LEFT OUTER JOIN pedidoscli AS despues ON c.codcliente = despues.codcliente AND despues.fecha >= " + fecha + " INNER JOIN dirclientes d ON c.codcliente = d.codcliente and d.domfacturacion is true")
         query["where"] = "antes.codcliente IS NOT NULL and despues.codcliente IS NULL"
         query["groupby"] = " c.codcliente, c.nombre, c.email, c.telefono1, d.direccion"
         query["orderby"] = "c.nombre DESC"
@@ -88,26 +59,8 @@ class clientes_inactivos(interna):
     def __init__(self, context=None):
         super(clientes_inactivos, self).__init__(context)
 
-    def initValidation(self, name, data=None):
-        return self.ctx.clientes_inactivos_initValidation(name, data)
-
-    def iniciaValoresLabel(self, model=None, template=None, cursor=None):
-        return self.ctx.clientes_inactivos_iniciaValoresLabel(model, template, cursor)
-
-    def bChLabel(self, fN=None, cursor=None):
-        return self.ctx.clientes_inactivos_bChLabel(fN, cursor)
-
-    def getFilters(self, model, name, template=None):
-        return self.ctx.clientes_inactivos_getFilters(model, name, template)
-
-    def getForeignFields(self, model, template=None):
-        return self.ctx.clientes_inactivos_getForeignFields(model, template)
-
-    def getDesc(self):
-        return self.ctx.clientes_inactivos_getDesc()
-
-    def queryGrid_clientesInactivos(self, model):
-        return self.ctx.clientes_inactivos_queryGrid_clientesInactivos(model)
+    def queryGrid_clientesInactivos(self, model, filters):
+        return self.ctx.clientes_inactivos_queryGrid_clientesInactivos(model, filters)
 
     def queryGrid_ventasClientes(self, model):
         return self.ctx.clientes_inactivos_queryGrid_ventasClientes(model)
@@ -118,22 +71,3 @@ class clientes_inactivos(interna):
     def dameEmails(self, model, oParam):
         return self.ctx.clientes_inactivos_dameEmails(model, oParam)
 
-
-# @class_declaration head #
-class head(clientes_inactivos):
-
-    def __init__(self, context=None):
-        super(head, self).__init__(context)
-
-
-# @class_declaration ifaceCtx #
-class ifaceCtx(head):
-
-    def __init__(self, context=None):
-        super(ifaceCtx, self).__init__(context)
-
-
-# @class_declaration FormInternalObj #
-class FormInternalObj(qsatype.FormDBWidget):
-    def _class_init(self):
-        self.iface = ifaceCtx(self)

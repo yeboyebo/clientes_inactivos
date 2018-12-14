@@ -8,7 +8,7 @@
                 "TEXT": "Clientes",
                 "URL": "principal/clientes/master",
                 "ICON": "dashboard",
-                "VISIBLE": true,
+                "VISIBLE": false,
                 "COLOR": "rgb(30, 170, 30)"
             }
         },
@@ -23,11 +23,6 @@
                 "VISIBLE": true,
                 "COLOR": "rgb(30, 170, 30)"
             }
-        },
-        {
-            "type": "updateNode",
-            "path": "/items[empresa]/VISIBLE",
-            "value": false
         }
     ]
 }
