@@ -21,11 +21,11 @@
                 {"tipo": "field", "key": "pedidoscli.fecha", "label": "Fecha", "width": 75},
                 {"tipo": "field", "key": "pedidoscli.codigo", "label": "Pedido", "width": 150},
                 {"tipo": "field", "key": "lineaspedidoscli.referencia", "label": "Referencia", "width": 150},
-                {"tipo": "field", "key": "lineaspedidoscli.descripcion", "label": "Descripción", "width": 300},
+                {"tipo": "field", "key": "lineaspedidoscli.descripcion", "label": "Descripción", "width": 500},
                 {"tipo": "field", "key": "lineaspedidoscli.cantidad", "label": "Cantidad", "width": 75},
-                {"tipo": "field", "key": "lineaspedidoscli.pvpunitario", "label": "P. Unitario", "width": 150},
-                {"tipo": "field", "key": "lineaspedidoscli.dtopor", "label": "% Dto.", "width": 100},
-                {"tipo": "field", "key": "lineaspedidoscli.pvptotal", "label": "P. Total.", "width": 150}
+                {"tipo": "field", "key": "lineaspedidoscli.pvpunitario", "label": "P. Unitario", "width": 75},
+                {"tipo": "field", "key": "lineaspedidoscli.dtopor", "label": "% Dto.", "width": 75},
+                {"tipo": "field", "key": "lineaspedidoscli.pvptotal", "label": "P. Total.", "width": 75}
             ]
         }
     },
