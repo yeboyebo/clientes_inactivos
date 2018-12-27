@@ -57,7 +57,7 @@ class clientes_inactivos(flfactppal):
         return response
 
     def __init__(self, context=None):
-        super(clientes_inactivos, self).__init__(context)
+        super().__init__(context)
 
     def queryGrid_clientesInactivos(self, model, filters):
         return self.ctx.clientes_inactivos_queryGrid_clientesInactivos(model, filters)
