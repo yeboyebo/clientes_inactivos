@@ -21,7 +21,7 @@ class clientes_inactivos(flfactppal):
         query["orderby"] = "c.nombre DESC"
         return query
 
-    def clientes_inactivos_queryGrid_ventasClientes(self, model):
+    def clientes_inactivos_queryGrid_ventasClientes(self, model, filters):
         print("-----------------------------------cliente: " + model.codcliente)
         query = {}
         query["tablesList"] = ("pedidoscli,lineaspedidoscli")
@@ -56,18 +56,37 @@ class clientes_inactivos(flfactppal):
         response["close"] = True
         return response
 
+    def clientes_inactivos_queryGrid_clientesNuevos(self, model, filters):
+        fecha = ''
+        if(filters):
+            print(filters['[d_fecha]'])
+            fecha = "'" + filters['[d_fecha]'] + "'"
+        if not fecha or fecha == "''":
+            fecha = 'CURRENT_DATE'
+        query = {}
+        query["tablesList"] = ("clientes,pedidoscli")
+        query["select"] = ("c.codcliente, c.nombre, c.email, c.telefono1, MIN(antes.fecha) as fecha, d.direccion")
+        query["from"] = ("clientes AS c INNER JOIN pedidoscli AS antes ON c.codcliente = antes.codcliente AND antes.fecha >= " + fecha + " LEFT OUTER JOIN pedidoscli AS despues ON c.codcliente = despues.codcliente AND despues.fecha < " + fecha + " INNER JOIN dirclientes d ON c.codcliente = d.codcliente and d.domfacturacion is true")
+        query["where"] = " antes.codcliente IS NOT NULL and despues.codcliente IS NULL"
+        query["groupby"] = " c.codcliente, c.nombre, c.email, c.telefono1, d.direccion"
+        query["orderby"] = "c.nombre DESC"
+        return query
+
     def __init__(self, context=None):
         super().__init__(context)
 
     def queryGrid_clientesInactivos(self, model, filters):
         return self.ctx.clientes_inactivos_queryGrid_clientesInactivos(model, filters)
 
-    def queryGrid_ventasClientes(self, model):
-        return self.ctx.clientes_inactivos_queryGrid_ventasClientes(model)
+    def queryGrid_ventasClientes(self, model, filters):
+        return self.ctx.clientes_inactivos_queryGrid_ventasClientes(model, filters)
 
     def dameDetalleVentasPorCliente(self, model):
         return self.ctx.clientes_inactivos_dameDetalleVentasPorCliente(model)
 
     def dameEmails(self, model, oParam):
         return self.ctx.clientes_inactivos_dameEmails(model, oParam)
+
+    def queryGrid_clientesNuevos(self, model, filters):
+        return self.ctx.clientes_inactivos_queryGrid_clientesNuevos(model, filters)
 

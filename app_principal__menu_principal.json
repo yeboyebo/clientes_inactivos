@@ -23,6 +23,18 @@
                 "VISIBLE": true,
                 "COLOR": "rgb(30, 170, 30)"
             }
+        },
+        {
+            "type": "insertAfterItem",
+            "path": "/items[inactivos]",
+            "value": {
+                "NAME": "nuevos",
+                "TEXT": "Clientes nuevos",
+                "URL": "principal/clientes/custom/masterclientesnuevos",
+                "ICON": "dashboard",
+                "VISIBLE": true,
+                "COLOR": "rgb(30, 170, 30)"
+            }
         }
     ]
 }
