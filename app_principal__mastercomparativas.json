@@ -1,0 +1,108 @@
+{
+    "querystring": {
+        "p_l": 50,
+        "p_c": true
+    },
+    "schema": {
+        "comparativas": {
+            "query": {
+                "p_l": 50
+            }
+        }
+    },
+    "layout": {
+        "queryGrid_comparativas": {
+            "componente": "YBTable",
+            "label": "Comparativa",
+            "prefix": "comparativas",
+            "multiselectable": true,
+            "cansavefilter": false,
+            "autofilter": false,
+            "colorRowField": "rowColor",
+            "filter": {
+                "anio_1": {
+                    "filterType": "custom",
+                    "tipo": 5,
+                    "key": "anio1",
+                    "desc": "anio1",
+                    "label": "Año 1",
+                    "optionlist": {
+                    	"2013": "2013",
+                    	"2014": "2014",
+                    	"2015": "2015",
+                    	"2016": "2016",
+                    	"2017": "2017",
+                    	"2018": "2018",
+                    	"2019": "2019",
+                    	"2020": "2020",
+                    	"2021": "2021",
+                    	"2022": "2022"
+                    }
+                },
+                "anio_2": {
+                    "filterType": "custom",
+                    "tipo": 5,
+                    "key": "anio2",
+                    "desc": "anio2",
+                    "label": "Año 2",
+                    "optionlist": {
+                    	"2013": "2013",
+                    	"2014": "2014",
+                    	"2015": "2015",
+                    	"2016": "2016",
+                    	"2017": "2017",
+                    	"2018": "2018",
+                    	"2019": "2019",
+                    	"2020": "2020",
+                    	"2021": "2021",
+                    	"2022": "2022"
+                    }
+                },
+                "trimestre": {
+                    "filterType": "custom",
+                    "tipo": 5,
+                    "key": "trimestre",
+                    "desc": "trimestre",
+                    "label": "Trimestre",
+                    "optionlist": {
+                    	"T1": "T1",
+                    	"T2": "T2",
+                    	"T3": "T3",
+                    	"T4": "T4"
+                    }
+                }
+            },
+            "type": "query",
+            "columns": [
+                {"tipo": "field", "key": "clientes.codcliente", "label": "Código", "width": 75},
+                {"tipo": "field", "key": "clientes.nombre", "label": "Nombre", "width": 250},
+                {"tipo": "field", "key": "dirclientes.direccion", "label": "Dirección", "width": 325},
+                {"tipo": "field", "key": "clientes.telefono1", "label": "Teléfono", "width": 75},
+                {"tipo": "field", "key": "clientes.email", "label": "Email", "width": 200},
+                {"tipo": "field", "key": "total1", "label": "Total 1", "width": 85},
+                {"tipo": "field", "key": "total2", "label": "Total 2", "width": 85},
+                {"tipo": "field", "key": "variacion", "label": "% variación", "width": 80}
+            ],
+            "rowclick": "dameDetalleComparativas",
+            "accionesGrid": [
+                {
+                    "key": "emails",
+                    "label": "Obtener emails"
+                }
+            ]
+        }
+    },
+    "acciones": {
+    	"dameDetalleComparativas": {
+            "action": "goto",
+            "prefix": "clientes",
+            "serverAction": "dameDetalleComparativasArticulo"
+        },
+        "emails": {
+            "action": "gridAction",
+            "icon": "email",
+            "prefix": "clientes",
+            "serverAction": "dameEmails"
+        }
+    }
+}

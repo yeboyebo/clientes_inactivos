@@ -35,6 +35,18 @@
                 "VISIBLE": true,
                 "COLOR": "rgb(30, 170, 30)"
             }
+        },
+        {
+            "type": "insertAfterItem",
+            "path": "/items[nuevos]",
+            "value": {
+                "NAME": "comparativas",
+                "TEXT": "Comparativas",
+                "URL": "principal/clientes/custom/mastercomparativas",
+                "ICON": "dashboard",
+                "VISIBLE": true,
+                "COLOR": "rgb(30, 170, 30)"
+            }
         }
     ]
 }

@@ -26,3 +26,18 @@ class clientes_inactivos_clientes(flfactppal_clientes, helpers.MixinConAcciones)
     def queryGrid_clientesNuevos(model, filters):
         return form.iface.queryGrid_clientesNuevos(model, filters)
 
+    @helpers.decoradores.accion(aqparam=["oParam"])
+    def queryGrid_comparativas(model, filters):
+        return form.iface.queryGrid_comparativas(model, filters)
+
+    def field_colorRow(self):
+        return form.iface.field_colorRow(self)
+
+    @helpers.decoradores.accion()
+    def dameDetalleComparativasArticulo(self):
+        return form.iface.dameDetalleComparativasArticulo(self)
+
+    @helpers.decoradores.accion(aqparam=["oParam"])
+    def queryGrid_comparativasArticulo(model, filters):
+        return form.iface.queryGrid_comparativasArticulo(model, filters)
+

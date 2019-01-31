@@ -1,0 +1,33 @@
+{
+    "querystring": {
+        "p_l": 50,
+        "p_c": true
+    },
+    "schema": {
+        "comparativasArticulo": {
+            "query": {
+                "p_l": 50
+            }
+        }
+    },
+    "layout": {
+    	"queryGrid_comparativasArticulo": {
+            "componente": "YBTable",
+            "label": "Comparativa de articulos",
+            "prefix": "comparativasArticulo",
+            "cansavefilter": false,
+            "autofilter": false,
+            "filter": "",
+            "type": "query",
+            "columns": [
+                
+                {"tipo": "field", "key": "articulos.referencia", "label": "Referencia", "width": 150},
+                {"tipo": "field", "key": "articulos.descripcion", "label": "Descripcion", "width": 500},
+                {"tipo": "field", "key": "cant1", "label": "Cantidad 1", "width": 75},
+                {"tipo": "field", "key": "cant2", "label": "Cantidad 2", "width": 75}
+            ]
+        }
+    },
+    "acciones": {
+    }
+}
