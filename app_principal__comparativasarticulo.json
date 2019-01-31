@@ -21,8 +21,8 @@
             "type": "query",
             "columns": [
                 
-                {"tipo": "field", "key": "articulos.referencia", "label": "Referencia", "width": 150},
-                {"tipo": "field", "key": "articulos.descripcion", "label": "Descripcion", "width": 500},
+                {"tipo": "field", "key": "lineaspedidoscli.referencia", "label": "Referencia", "width": 150},
+                {"tipo": "field", "key": "lineaspedidoscli.descripcion", "label": "Descripcion", "width": 500},
                 {"tipo": "field", "key": "cant1", "label": "Cantidad 1", "width": 75},
                 {"tipo": "field", "key": "cant2", "label": "Cantidad 2", "width": 75}
             ]
