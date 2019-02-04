@@ -17,6 +17,7 @@
             "prefix": "comparativasArticulo",
             "cansavefilter": false,
             "autofilter": false,
+            "colorRowField": "rowColor",
             "filter": "",
             "type": "query",
             "columns": [

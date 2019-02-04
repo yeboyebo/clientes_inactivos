@@ -33,6 +33,9 @@ class clientes_inactivos_clientes(flfactppal_clientes, helpers.MixinConAcciones)
     def field_colorRow(self):
         return form.iface.field_colorRow(self)
 
+    def field_colorRow2(self):
+        return form.iface.field_colorRow2(self)
+
     @helpers.decoradores.accion()
     def dameDetalleComparativasArticulo(self):
         return form.iface.dameDetalleComparativasArticulo(self)

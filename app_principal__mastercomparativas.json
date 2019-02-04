@@ -23,8 +23,8 @@
                 "anio_1": {
                     "filterType": "custom",
                     "tipo": 5,
-                    "key": "anio1",
-                    "desc": "anio1",
+                    "key": "Año 1",
+                    "desc": "Año 1",
                     "label": "Año 1",
                     "optionlist": {
                     	"2013": "2013",
@@ -43,7 +43,7 @@
                     "filterType": "custom",
                     "tipo": 5,
                     "key": "anio2",
-                    "desc": "anio2",
+                    "desc": "Año 2",
                     "label": "Año 2",
                     "optionlist": {
                     	"2013": "2013",
@@ -74,10 +74,10 @@
             },
             "type": "query",
             "columns": [
-                {"tipo": "field", "key": "clientes.codcliente", "label": "Código", "width": 75},
+                {"tipo": "field", "key": "clientes.codcliente", "label": "Código", "width": 60},
                 {"tipo": "field", "key": "clientes.nombre", "label": "Nombre", "width": 250},
                 {"tipo": "field", "key": "dirclientes.direccion", "label": "Dirección", "width": 325},
-                {"tipo": "field", "key": "clientes.telefono1", "label": "Teléfono", "width": 75},
+                {"tipo": "field", "key": "clientes.telefono1", "label": "Teléfono", "width": 90},
                 {"tipo": "field", "key": "clientes.email", "label": "Email", "width": 200},
                 {"tipo": "field", "key": "total1", "label": "Total 1", "width": 85},
                 {"tipo": "field", "key": "total2", "label": "Total 2", "width": 85},

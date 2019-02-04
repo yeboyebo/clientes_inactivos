@@ -148,8 +148,8 @@ class clientes_inactivos(flfactppal):
 
         query["tablesList"] = ("clientes,dirclientes")
         query["select"] = ("clientes.codcliente, clientes.nombre, clientes.email, clientes.telefono1, dirclientes.direccion, (SELECT COALESCE(SUM(pedidoscli.total),0) from pedidoscli  where pedidoscli.codcliente = clientes.codcliente and pedidoscli.fecha BETWEEN " + anio1 + " AND " + anio1f + ") AS total1, (SELECT COALESCE(SUM(pedidoscli.total),0) from pedidoscli  where pedidoscli.codcliente = clientes.codcliente and pedidoscli.fecha BETWEEN " + anio2 + " AND " + anio2f + ") AS total2, CASE WHEN (SELECT COALESCE(SUM(pedidoscli.total),0) from pedidoscli  where pedidoscli.codcliente = clientes.codcliente and pedidoscli.fecha BETWEEN " + anio1 + " AND " + anio1f + ") = 0 THEN (CASE WHEN (SELECT COALESCE(SUM(pedidoscli.total),0) from pedidoscli  where pedidoscli.codcliente = clientes.codcliente and pedidoscli.fecha BETWEEN " + anio2 + " AND " + anio2f + ") = 0 THEN 0 ELSE 100 END) ELSE round((((((SELECT COALESCE(SUM(pedidoscli.total),0) from pedidoscli  where pedidoscli.codcliente = clientes.codcliente and pedidoscli.fecha BETWEEN " + anio2 + " AND " + anio2f + ") - (SELECT COALESCE(SUM(pedidoscli.total),0) from pedidoscli  where pedidoscli.codcliente = clientes.codcliente and pedidoscli.fecha BETWEEN " + anio1 + " AND " + anio1f + ")) * 100)) / (SELECT COALESCE(SUM(pedidoscli.total),0) from pedidoscli  where pedidoscli.codcliente = clientes.codcliente and pedidoscli.fecha BETWEEN " + anio1 + " AND " + anio1f + "))::numeric,2) END AS variacion")
-        query["from"] = ("clientes INNER JOIN dirclientes ON clientes.codcliente = dirclientes.codcliente and dirclientes.domfacturacion is true")
-        query["where"] = where
+        query["from"] = ("clientes INNER JOIN dirclientes ON clientes.codcliente = dirclientes.codcliente and dirclientes.domfacturacion is true INNER JOIN pedidoscli ON clientes.codcliente = pedidoscli.codcliente")
+        query["where"] = where + " AND ((pedidoscli.fecha BETWEEN " + anio1 + " AND " + anio1f + ") OR (pedidoscli.fecha BETWEEN " + anio2 + " AND " + anio2f + "))"
         query["groupby"] = " clientes.codcliente, clientes.nombre, clientes.email, clientes.telefono1, dirclientes.direccion"
         query["orderby"] = "clientes.nombre DESC"
         return query
@@ -157,14 +157,24 @@ class clientes_inactivos(flfactppal):
     def clientes_inactivos_getForeignFields(self, model, template=None):
         fields = []
         if template == "comparativas":
+            print("color 1")
             fields = [{'verbose_name': 'rowColor', 'func': 'field_colorRow'}]
+        elif template == "comparativasArticulo":
+            print("color 2")
+            fields = [{'verbose_name': 'rowColor', 'func': 'field_colorRow2'}]
         return fields
 
     def clientes_inactivos_field_colorRow(self, model):
         if model["total2"] > model["total1"]:
-            return "cSuccess"
+            return "ciCsuccess"
         else:
-            return "cDanger"
+            return "ciWarning"
+
+    def clientes_inactivos_field_colorRow2(self, model):
+        if model["cant2"] > model["cant1"]:
+            return "ciCsuccess"
+        else:
+            return "ciWarning"
 
     def clientes_inactivos_dameDetalleComparativasArticulo(self, model):
         url = '/principal/clientes/' + str(model.codcliente) + '/comparativasarticulo'
@@ -215,6 +225,9 @@ class clientes_inactivos(flfactppal):
 
     def field_colorRow(self, model):
         return self.ctx.clientes_inactivos_field_colorRow(model)
+
+    def field_colorRow2(self, model):
+        return self.ctx.clientes_inactivos_field_colorRow2(model)
 
     def dameDetalleComparativasArticulo(self, model):
         return self.ctx.clientes_inactivos_dameDetalleComparativasArticulo(model)
